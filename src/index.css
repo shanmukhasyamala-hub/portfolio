@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-obsidian: #060911;
+  --color-midnight: #0A101F;
+  --color-dossier: #0F172A;
+  --color-gold: #D4AF37;
+  --color-gold-bright: #E8C766;
+  --color-evidence: #9E2A2B;
+  --color-violet-mist: #6F5E96;
+}
+
+@layer base {
+  html {
+    background-color: #060911;
+    color: #E6E8EE;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #060911;
+    color: #E6E8EE;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 3px;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Subtle procedural SVG film grain */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.065'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-1.5%, 1%); }
+  50% { transform: translate(1%, -1.5%); }
+  75% { transform: translate(-1%, -1%); }
+}
+
+@keyframes flashlightSweep {
+  0%, 100% { transform: translate3d(-6%, -2%, 0) rotate(-4deg); opacity: 0.36; }
+  50% { transform: translate3d(6%, 3%, 0) rotate(4deg); opacity: 0.56; }
+}
+
+@keyframes floatMote {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.15; }
+  50% { transform: translate3d(8px, -18px, 0); opacity: 0.55; }
+}
+
+@keyframes scannerBeam {
+  0% { transform: translateY(-10vh); opacity: 0; }
+  15%, 85% { opacity: 0.28; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+@keyframes fogDrift {
+  0%, 100% { transform: translate3d(-3%, 0, 0); opacity: 0.26; }
+  50% { transform: translate3d(3%, -1.5%, 0); opacity: 0.42; }
+}
+
+.film-grain-animated {
+  animation: grainShift 8s steps(6) infinite;
+}
+
+.animate-flashlight {
+  animation: flashlightSweep 14s ease-in-out infinite;
+}
+
+.animate-mote {
+  animation: floatMote 9s ease-in-out infinite;
+}
+
+.animate-scanner {
+  animation: scannerBeam 11s linear infinite;
+}
+
+.animate-fog {
+  animation: fogDrift 18s ease-in-out infinite;
+}
+
+/* Custom sleek dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060911;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.28);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .film-grain-animated,
+  .animate-flashlight,
+  .animate-mote,
+  .animate-scanner,
+  .animate-fog {
+    animation: none !important;
+  }
+}

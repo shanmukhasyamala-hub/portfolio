@@ -141,10 +141,30 @@ export function FinalLead() {
     <section
       id="section-final-lead"
       aria-labelledby="final-lead-heading"
-      className="relative py-24 px-4 sm:px-8 lg:px-12"
+      className="relative py-24 px-4 sm:px-8 lg:px-12 overflow-hidden"
     >
-      <div className="max-w-[920px] w-full mx-auto">
-        <div className="chapter-panel relative bg-[#060911]/90 lg:bg-[#0A101F]/86 backdrop-blur-md border border-[#D4AF37]/30 shadow-[0_24px_80px_rgba(0,0,0,0.85)] p-6 sm:p-10 space-y-8 transition-colors duration-300 hover:border-[#D4AF37]/50">
+      {/* Subtle section-local atmospheric fog & minimal dust motes */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="animate-fog absolute -inset-x-16 top-1/4 h-72 rounded-full blur-3xl"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, rgba(111,94,150,0.14) 0%, rgba(10,16,31,0.06) 50%, transparent 75%)',
+          }}
+        />
+        <span className="animate-mote absolute left-[10%] top-[22%] w-1 h-1 rounded-full bg-[#D4AF37]/45" />
+        <span
+          className="animate-mote absolute right-[12%] top-[34%] w-1.5 h-1.5 rounded-full bg-[#E5C158]/30"
+          style={{ animationDelay: '2.5s' }}
+        />
+        <span
+          className="animate-mote absolute left-[18%] bottom-[20%] w-1 h-1 rounded-full bg-[#D4AF37]/35"
+          style={{ animationDelay: '4.5s' }}
+        />
+      </div>
+
+      <div className="relative max-w-[920px] w-full mx-auto">
+        <div className="chapter-panel relative bg-[#060911]/90 lg:bg-[#0A101F]/86 backdrop-blur-md border border-[#D4AF37]/35 shadow-[0_24px_80px_rgba(0,0,0,0.85),0_0_45px_rgba(212,175,55,0.08)] p-6 sm:p-10 space-y-8 transition-[border-color,box-shadow] duration-300 hover:border-[#D4AF37]/55 hover:shadow-[0_24px_80px_rgba(0,0,0,0.85),0_0_55px_rgba(212,175,55,0.14)]">
           {/* Subtle corner case-file markers */}
           <span aria-hidden="true" className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#D4AF37]" />
           <span aria-hidden="true" className="absolute top-0 right-0 w-3 h-3 border-t border-r border-[#D4AF37]" />

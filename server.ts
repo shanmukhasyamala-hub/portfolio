@@ -242,10 +242,9 @@ async function startServer() {
     const payload = validation.data!;
     const resendApiKey = (process.env.RESEND_API_KEY || '').trim();
     const resendFromEmail = (process.env.RESEND_FROM_EMAIL || '').trim();
-    const receivingEmail =
-      (process.env.CONTACT_EMAIL || '').trim() || 'shanmukhasyamala2008@gmail.com';
+    const receivingEmail = (process.env.CONTACT_EMAIL || '').trim();
 
-    if (!resendApiKey || !resendFromEmail) {
+    if (!resendApiKey || !resendFromEmail || !receivingEmail) {
       return res.status(503).json({
         ok: false,
         error: 'Email transmission service is not yet configured on the server.',
